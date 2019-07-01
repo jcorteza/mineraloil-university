@@ -16,7 +16,7 @@ public class FilterIntegrationTest extends BaseUITest {
 
         controller.interactWithInput(keyword);
 
-        Assertions.assertThat(controller.getStatusText()).allSatisfy(statusText -> statusText.contains(keyword));
+        Assertions.assertThat(controller.getStatusText()).allSatisfy(statusText -> Assertions.assertThat(statusText.toLowerCase()).contains(keyword));
     }
 
 }
