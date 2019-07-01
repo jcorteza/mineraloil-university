@@ -23,7 +23,7 @@ public class OnboardingUIView {
         return driver.createBaseElement(By.xpath("//button[@id='filterButton']"));
     }
 
-    public List<TextElement> getStatusElement() {
+    public List<TextElement> getStatusElements() {
         return driver.createTextElement(By.xpath("//p[@class='tweetText']")).toList();
     }
 }

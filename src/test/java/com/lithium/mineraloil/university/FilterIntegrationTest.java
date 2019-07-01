@@ -8,12 +8,15 @@ import org.junit.jupiter.api.Test;
 
 public class FilterIntegrationTest extends BaseUITest {
 
-    @DisplayName("When input has text and button clicked, timeline appears")
+    @DisplayName("When input has text and button clicked, timeline appears and each tweet contains 'the'")
     @Test
     void filterTest() {
+        String keyword = "the";
         OnboardingUIController controller = new OnboardingUIController();
-        controller.interactWithInput();
-        Assertions.assertThat(controller.getStatusText()).allSatisfy(statusText -> statusText.contains("that"));
+
+        controller.interactWithInput(keyword);
+
+        Assertions.assertThat(controller.getStatusText()).allSatisfy(statusText -> statusText.contains(keyword));
     }
 
 }

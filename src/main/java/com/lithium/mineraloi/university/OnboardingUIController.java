@@ -1,5 +1,7 @@
 package com.lithium.mineraloi.university;
 
+import com.lithium.mineraloil.selenium.elements.TextElement;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,8 +18,8 @@ public class OnboardingUIController {
     }
 
     public List<String> getStatusText() {
-        return view.getStatusElement().stream()
-                .map(element -> element.getInnerText())
+        return view.getStatusElements().stream()
+                .map(TextElement::getInnerText)
                 .collect(Collectors.toList());
     }
 }
