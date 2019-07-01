@@ -10,8 +10,8 @@ public class OnboardingUIController {
         view = new OnboardingUIView();
     }
 
-    public void interactWithInput() {
-        view.getFilterInputElement().type("the");
+    public void interactWithInput(String keyword) {
+        view.getFilterInputElement().type(keyword);
         view.getButtonElement().click();
     }
 
