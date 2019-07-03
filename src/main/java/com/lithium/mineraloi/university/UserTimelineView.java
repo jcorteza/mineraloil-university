@@ -8,22 +8,22 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class OnboardingUIView {
+public class UserTimelineView {
     private Driver driver;
 
-    public OnboardingUIView() {
+    public UserTimelineView() {
         driver = DriverManager.INSTANCE.getDriver();
     }
 
-    public TextElement getFilterInputElement() {
-        return driver.createTextElement(By.xpath("//input[@id='filterInput']"));
+    public BaseElement getAnchorElement() {
+        return driver.createBaseElement(By.xpath("//nav/a[2]"));
     }
 
     public BaseElement getButtonElement() {
-        return driver.createBaseElement(By.xpath("//button[@id='filterButton']"));
+        return driver.createBaseElement(By.xpath("//button"));
     }
 
-    public List<TextElement> getStatusElements() {
-        return driver.createTextElement(By.xpath("//p[@class='tweetText']")).toList();
+    public List<TextElement> getUserNameElement() {
+        return driver.createTextElement(By.xpath("//p[@class='name']")).toList();
     }
 }

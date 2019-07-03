@@ -6,20 +6,56 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OnboardingUIController {
-    private OnboardingUIView view;
+    private HomeTimelineView homeTimelineView;
+    private UserTimelineView userTimelineView;
+    private PostTweetUIView postTweetUIView;
 
     public OnboardingUIController() {
-        view = new OnboardingUIView();
+        homeTimelineView = new HomeTimelineView();
+        userTimelineView = new UserTimelineView();
+        postTweetUIView = new PostTweetUIView();
+    }
+
+    public void clickHomeTimelineLink() {
+        homeTimelineView.getAnchorElement().click();
     }
 
     public void interactWithInput(String keyword) {
-        view.getFilterInputElement().type(keyword);
-        view.getButtonElement().click();
+        homeTimelineView.getFilterInputElement().type(keyword);
+        homeTimelineView.getButtonElement().click();
     }
 
-    public List<String> getStatusText() {
-        return view.getStatusElements().stream()
+    public List<String> getHomeTimelineStatusText() {
+        return homeTimelineView.getStatusElements().stream()
                 .map(TextElement::getInnerText)
                 .collect(Collectors.toList());
+    }
+
+    public void clickUserTimelineLink() {
+        userTimelineView.getAnchorElement().click();
+    }
+
+    public List<String> getUserTimelineUserName() {
+        userTimelineView.getButtonElement().click();
+        return userTimelineView.getUserNameElement().stream()
+                .map(TextElement::getInnerText)
+                .collect(Collectors.toList());
+    }
+
+    public void clickPostTweetLink() {
+        postTweetUIView.getAnchorElement().click();
+    }
+
+    public void inputTextArea(String text) {
+        postTweetUIView.getTextAreaElement().type(text);
+    }
+
+    public void clickPostButton() {
+        postTweetUIView.getButtonElement().click();
+    }
+
+    public String getInfoText() {
+        postTweetUIView.getInfoMessageElement().waitUntilDisplayed();
+        return postTweetUIView.getInfoMessageElement().getInnerText();
     }
 }
